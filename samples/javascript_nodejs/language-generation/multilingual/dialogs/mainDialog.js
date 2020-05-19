@@ -22,14 +22,14 @@ class MainDialog extends ComponentDialog {
         this.initialDialogId = MAIN_WATERFALL_DIALOG;
 
         var lgTemplatesMap = new Map();
-        lgTemplatesMap.set('fr-fr', Templates.parseFile("./resources/root.lg", this.resourceExplorerResolver('fr-fr')));
-        lgTemplatesMap.set('en-us', Templates.parseFile("./resources/root.lg", this.resourceExplorerResolver('en-us')));
-        lgTemplatesMap.set("", Templates.parseFile("./resources/root.lg", this.resourceExplorerResolver('')));
+        lgTemplatesMap.set('fr-fr', Templates.parseFile("./resources/root.lg", this.multilingualResolver('fr-fr')));
+        lgTemplatesMap.set('en-us', Templates.parseFile("./resources/root.lg", this.multilingualResolver('en-us')));
+        lgTemplatesMap.set("", Templates.parseFile("./resources/root.lg", this.multilingualResolver('')));
 
         this.generator = new MultiLanguageLG(lgTemplatesMap, undefined);
     }
 
-    resourceExplorerResolver(locale) {
+    multilingualResolver(locale) {
         return  (source, resourceId) => {
             let importPath = TemplateExtensions.normalizePath(resourceId);
             if (!path.isAbsolute(importPath)) {
