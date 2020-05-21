@@ -1,5 +1,6 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
+import uuid
 
 from botbuilder.core import TurnContext, CardFactory
 from botbuilder.core.card_factory import ContentTypes
@@ -11,14 +12,20 @@ from botbuilder.schema.teams import (
     MessagingExtensionAttachment,
     MessagingExtensionResult,
     MessagingExtensionResponse,
+    Tab,
 )
+from botbuilder.schema.teams.additional_properties import ContentType
 
 
 class LinkUnfurlingBot(TeamsActivityHandler):
     async def on_teams_app_based_link_query(
         self, turn_context: TurnContext, query: AppBasedLinkQuery
     ):
-        hero_card = ThumbnailCard(
+        # A card response or a Tab response, or both, can be sent.
+        # This sample is sending both.
+
+        # create the Card attachment
+        card = ThumbnailCard(
             title="Thumbnail Card",
             text=query.url,
             images=[
@@ -28,14 +35,29 @@ class LinkUnfurlingBot(TeamsActivityHandler):
             ],
         )
 
-        attachments = MessagingExtensionAttachment(
-            content_type=ContentTypes.hero_card, content=hero_card
+        card_attachment = MessagingExtensionAttachment(
+            content_type=ContentTypes.hero_card, content=card
         )
 
+        # create the Tab attachment
+        tab = Tab(
+            entity_id=str(uuid.uuid4()),
+            name="Links",
+            content_url="https://github.com/microsoft/botframework-sdk/blob/master/README.md",
+            website_url="https://github.com/microsoft/botframework-sdk",
+            remove_url="https://github.com/microsoft/botframework-sdk/blob/master/Contributing.md",
+        )
+
+        tab_attachment = MessagingExtensionAttachment(
+            content_type=ContentType.TAB_UNFURLING, content=tab,
+        )
+
+        # the result is the card and tab attachments
         result = MessagingExtensionResult(
-            attachment_layout="list", type="result", attachments=[attachments]
+            attachment_layout="list",
+            type="result",
+            attachments=[card_attachment, tab_attachment],
         )
-
         return MessagingExtensionResponse(compose_extension=result)
 
     async def on_teams_messaging_extension_query(
