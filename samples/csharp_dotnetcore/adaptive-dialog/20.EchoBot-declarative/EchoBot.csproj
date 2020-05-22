@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RestoreSources>
+      https://api.nuget.org/v3/index.json;
+      d:\packages;
+    </RestoreSources>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,21 +14,22 @@
     <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.9.0" />
     <PackageReference Include="Microsoft.Bot.Builder.LanguageGeneration" Version="4.9.0" />
     <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.9.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Tools.Web" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Tools.Build" Version="1.0.23" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="**/*.dialog">
+    <Content Include="Dialogs/**/*.dialog">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="**/*.lg">
+    <Content Include="Dialogs/**/*.lg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="**/*.lu">
+    <Content Include="Dialogs/**/*.lu">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>
