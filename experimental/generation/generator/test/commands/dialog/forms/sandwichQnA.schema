@@ -94,5 +94,9 @@
         "Toppings",
         "Sauces",
         "Price"
+    ],
+    "$requires": [
+        "professional.schema",
+        "standard.schema"
     ]
 }
