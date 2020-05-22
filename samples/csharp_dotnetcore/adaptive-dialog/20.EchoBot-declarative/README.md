@@ -2,6 +2,8 @@
 
 Bot Framework Adaptive Dialog declarative Echo bot. This bot is built using declaratively defined [adaptive dialog][1].
 
+[![Deploy to Azure][deploy-button]][arm-template]
+
 ## Prerequisites
 - [.NET Core SDK][4] version 3.1
 	```bash
@@ -49,5 +51,7 @@ Bot Framework Adaptive Dialog declarative Echo bot. This bot is built using decl
 - [.lu file format](https://aka.ms/lu-file-format)
 - [.lg file format](https://aka.ms/lg-file-format)
 - [.qna file format](https://aka.ms/qna-file-format)
- 
+
 [1]:https://aka.ms/adaptive-dialogs
+[deploy-button]:https://aka.ms/deploytoazurebutton
+[arm-template]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fmicrosoft%2FBotBuilder-Samples%2Ftree%2Fhailiu%2Farm-deploy%2Fsamples%2Fcsharp_dotnetcore%2Fadaptive-dialog%2F20.EchoBot-declarative%2Fazuredeploy.json)
