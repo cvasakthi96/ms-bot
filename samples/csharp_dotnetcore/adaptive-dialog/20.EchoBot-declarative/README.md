@@ -54,4 +54,4 @@ Bot Framework Adaptive Dialog declarative Echo bot. This bot is built using decl
 
 [1]:https://aka.ms/adaptive-dialogs
 [deploy-button]:https://aka.ms/deploytoazurebutton
-[arm-template]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fmicrosoft%2FBotBuilder-Samples%2Ftree%2Fhailiu%2Farm-deploy%2Fsamples%2Fcsharp_dotnetcore%2Fadaptive-dialog%2F20.EchoBot-declarative%2Fazuredeploy.json)
+[arm-template]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fmicrosoft%2FBotBuilder-Samples%2Fraw%2Fhailiu%2Farm-deploy%2Fsamples%2Fcsharp_dotnetcore%2Fadaptive-dialog%2F20.EchoBot-declarative%2Fazuredeploy.json
