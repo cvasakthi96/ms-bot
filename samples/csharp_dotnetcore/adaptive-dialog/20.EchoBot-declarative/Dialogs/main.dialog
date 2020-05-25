@@ -7,7 +7,7 @@
       "actions": [
         {
           "$kind": "Microsoft.SendActivity",
-          "activity":  "Azure said '${turn.activity.text}'"
+          "activity":  "az botapp said '${turn.activity.text}'"
         }
       ]
     }

@@ -31,6 +31,7 @@ namespace Microsoft.BotBuilderSamples
                             config.AddJsonFile(file.FullName, optional: false, reloadOnChange: true);
                         }
                     }
+                    config.AddEnvironmentVariables();
                 })
 
                 .ConfigureAppConfiguration((hostingContext, builder) =>

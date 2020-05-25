@@ -1,10 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Primitives;
 
 namespace Microsoft.BotBuilderSamples.Controllers
 {
@@ -17,11 +21,15 @@ namespace Microsoft.BotBuilderSamples.Controllers
     {
         private readonly IBotFrameworkHttpAdapter Adapter;
         private readonly IBot Bot;
+        private readonly IBotTelemetryClient TelemetryClient;
+        private readonly IConfiguration Config;
 
-        public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
+        public BotController(IBotFrameworkHttpAdapter adapter, IBot bot, IBotTelemetryClient telemetryClient, IConfiguration config)
         {
             Adapter = adapter;
             Bot = bot;
+            TelemetryClient = telemetryClient;
+            Config = config;
         }
 
         [HttpPost]

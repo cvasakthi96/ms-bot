@@ -4,6 +4,7 @@
 using System;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs.Declarative.Resources;
+using Microsoft.Bot.Builder.Integration.ApplicationInsights.Core;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
@@ -13,13 +14,19 @@ namespace Microsoft.BotBuilderSamples
 {
     public class EchoBotAdapter : BotFrameworkHttpAdapter
     {
-        public EchoBotAdapter(ICredentialProvider credentialProvider, IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger, IStorage storage, UserState userState, ConversationState conversationState, ResourceExplorer resourceExplorer)
+        public EchoBotAdapter(ICredentialProvider credentialProvider, IConfiguration configuration,
+            ILogger<BotFrameworkHttpAdapter> logger,
+            IStorage storage,
+            UserState userState,
+            ConversationState conversationState,
+            TelemetryInitializerMiddleware telemetryInitializerMiddleware)
             : base(credentialProvider)
         {
             this.Use(new RegisterClassMiddleware<IConfiguration>(configuration));
             this.UseStorage(storage);
             this.UseBotState(userState);
             this.UseBotState(conversationState);
+            this.Use(telemetryInitializerMiddleware);
 
             this.OnTurnError = async (turnContext, exception) =>
             {
