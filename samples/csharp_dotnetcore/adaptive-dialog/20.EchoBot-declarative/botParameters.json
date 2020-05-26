@@ -1,0 +1,11 @@
+{
+    "botId": {
+        "value": "{botId}"
+    },
+    "msAppId": {
+        "value": "{appId}"
+    },
+    "msAppPassword": {
+        "value": "{password}"
+    }
+}
