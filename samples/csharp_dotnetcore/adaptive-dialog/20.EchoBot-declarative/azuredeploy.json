@@ -173,6 +173,20 @@
             "properties": "[union(variables('appSettings'), json(concat('{\"MicrosoftAppPassword\": \"', concat('@Microsoft.KeyVault(SecretUri=', reference(variables('appPasswordSecretId'), '2019-09-01', 'Full').properties.secretUriWithVersion, ')'), '\"}')))]"
         },
         {
+            "type": "Microsoft.Web/sites/config",
+            "name": "[concat(variables('botAppName'), '/slotConfigNames')]",
+            "dependsOn": [
+                "[variables('botAppName')]"
+            ],
+            "apiVersion": "2018-11-01",
+            "properties": {
+                "appSettingNames": [
+                    "MicrosoftAppId",
+                    "MicrosoftAppPassword"
+                ]
+            }
+        },
+        {
             "type": "Microsoft.BotService/botServices",
             "name": "[parameters('botId')]",
             "kind": "bot",
