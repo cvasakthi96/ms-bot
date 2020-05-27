@@ -1,11 +1,20 @@
 {
+    "deployZipUrl": {
+        "value": false
+    },
     "botId": {
-        "value": "{botId}"
+        "value": "botty-526"
     },
     "msAppId": {
-        "value": "{appId}"
+        "value": "4ebdf961-de4c-4cd8-b6c1-ae6bdbe6dc67"
     },
     "msAppPassword": {
-        "value": "{password}"
+        "value": ""
+    },
+    "existingServerFarmId": {
+        "value": "/subscriptions/8d5ceb22-44c7-4367-bfc6-07378096e055/resourceGroups/hailiuprodbots/providers/Microsoft.Web/serverfarms/hailiuprodbots"
+    },
+    "existingServerFarmLocation": {
+        "value": "westus2"
     }
 }
