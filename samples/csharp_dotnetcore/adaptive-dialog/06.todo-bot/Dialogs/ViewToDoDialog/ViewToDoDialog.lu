@@ -6,22 +6,12 @@
 - shopping list
 - how about the to do list?
 
+> These will be added to the listType in addition to everything else that is imported.
 @ list listType = 
 - all : 
 	- everything
 	- all items
-- todo :
-	- to do
-    - todos
-    - laundry            
-- grocery :
-    - groceries
-    - fruits
-    - vegetables
-    - household items
-    - house hold items
-- shopping : 
-    - shopping 
-    - shop
-    - shoppers
+
+> Import list type entity
+[list type entity](../common/listType.entity.lu)
 

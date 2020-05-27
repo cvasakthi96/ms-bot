@@ -56,21 +56,8 @@
 - shopping list
 - how about the to do list?
 
-@ list listType = 
-- todo :
-	- to do
-    - todos
-    - laundry            
-- grocery :
-    - groceries
-    - fruits
-    - vegetables
-    - household items
-    - house hold items
-- shopping : 
-    - shopping 
-    - shop
-    - shoppers
+> Import list type entity
+[list type entity](../common/listType.entity.lu)
 
 # Help
 - Help

@@ -59,21 +59,8 @@
 > entity definitions
 @ ml itemTitle
 
-@ list listType = 
-- todo :
-    - to do
-    - todos
-    - laundry            
-- grocery :
-    - groceries
-    - fruits
-    - vegetables
-    - household items
-    - house hold items
-- shopping : 
-    - shopping 
-    - shop
-    - shoppers
+> Import list type entity
+[list type entity](../common/listType.entity.lu)
 
 > phrase list definitions
 @ phraseList addItem(interchangeable) = 
@@ -198,13 +185,4 @@
 - no
 
 > Add confirmation list entity type
-@ list confirmation = 
-- yes : 
-	- yeah
-	- ok
-	- yup
-- no :
-    - nope
-    - not now
-    - not really
-    - go back               
+[confirmation entity](../common/confirmation.entity.lu)
