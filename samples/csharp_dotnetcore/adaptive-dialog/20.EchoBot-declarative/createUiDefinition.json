@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+       "basics": [{
+            "name": "botId",
+			"label": "Bot Id",
+            "type": "Microsoft.Common.TextBox",
+            "constraints": {
+                "required": true,
+                "regex": "^[a-z][-a-z0-9]{4,32}$"
+            }
+       }],
+       "steps": [
+           {
+               "name": "hosting",
+               "label": "Hosting choices",
+               "bladeTitle": "Host bot in web app",
+               "bladeSubtitle": "deploy the bot app to web app service",
+               "subLabel": {
+                   "postValidation": "Ready to roll",
+                   "preValidation": "Checking all the details"
+               },
+               "elements": [
+                   {
+                       "name": "existingServerFarm",
+                       "label": "App serivce plan",
+                       "type": "Microsoft.Solutions.ResourceSelector",
+                       "resourceType": "Microsoft.Web/serverFarms",
+                       "options": {
+                           "filter": {
+                                "subscription": "onBasics",
+                                "location": "onBasics"
+                            }
+                        },
+                       "constraints": {
+                           "required": false
+                       }
+                   }
+               ]
+           },
+           {
+               "name": "overrides",
+               "label": "Overrides",
+               "bladeTitle": "Overrides",
+               "bladeSubtitle": "provide overrides default create behavior",
+               "elements": [
+                   {
+                       "name": "msAppId",
+                       "label": "Bot app id",
+                       "type": "Microsoft.Common.TextBox",
+                       "constraints": {
+                           "required": false,
+                           "regex": "/[-a-f0-9]+/"
+                       }
+                   },
+                   {
+                       "name": "msAppPassword",
+                       "label": "Bot app password",
+                       "type": "Microsoft.Common.PasswordBox",
+                       "constraints": {
+                           "required": false
+                       }
+                   }
+               ]
+           }
+       ],
+       "outputs": {
+           "botId": "[basics('botId')]",
+           "existingServerFarmId": "[steps('hosting').existingServerFarm.id]",
+           "existingServerFarmLocation": "[steps('hosting').existingServerFarm.location]",
+           "msAppId": "[steps('overrides').msAppId]",
+           "msAppPassword": "[steps('overrides').msAppPassword]"
+       },
+       "resourceTypes": [ "Microsoft.BotService/bots", "Micrsosoft.KeyVault/vaults", "Microsoft.Web/sites", "Microsoft.Web/serverfarms"]
+    }
+ }
