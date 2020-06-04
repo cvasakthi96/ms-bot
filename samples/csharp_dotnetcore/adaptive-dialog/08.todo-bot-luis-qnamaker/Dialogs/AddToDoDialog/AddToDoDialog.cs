@@ -151,7 +151,7 @@ namespace Microsoft.BotBuilderSamples
                     {
                         Actions = new List<Dialog>()
                         {
-                            new SendActivity("${@Answer}")
+                            new CodeAction(ResolveAndSendQnAAnswer)
                         }
                     }
                 }

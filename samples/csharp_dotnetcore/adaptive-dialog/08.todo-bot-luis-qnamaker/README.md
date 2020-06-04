@@ -59,8 +59,10 @@ This sample demonstrates using [Adaptive dialog][1],  [Language Generation][2] f
 ```
 - In a command prompt, navigate to `samples/csharp_dotnetcore/adaptive-dialog/08.todo-bot-luis-qnamaker`
 - In order for interruption to work effectively, you need to generate LU models that are cross-trained. 
-  - Cross training requires a definition of your dialog hierarchy. See Dialogs/DialogLuHierarchy.config.json as an example.
-> bf luis:cross-train --in Dialogs --out generated --config Dialogs/DialogLuHierarchy.config.json
+- Cross training requires a definition of your dialog hierarchy. See Dialogs/DialogLuHierarchy.config.json as an example.
+```
+> cd Dialogs
+> bf luis:cross-train --in . --out ../generated --config Dialogs/DialogLuHierarchy.config.json
 ```
 - Get your [LUIS authoring key](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys)
 - To create, train and pubish LUIS applications for this bot
