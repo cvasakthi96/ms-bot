@@ -4,6 +4,8 @@ Bot Framework Adaptive Dialog declarative Echo bot. This bot is built using decl
 
 [![Deploy to Azure][deploy-button]][arm-template]
 
+Or copy [creatUiDefintion.json](./createUiDefinition.json) to [create-ui-sandbox] to see custom create UI
+
 ## Prerequisites
 - [.NET Core SDK][4] version 3.1
 	```bash
@@ -55,3 +57,10 @@ Bot Framework Adaptive Dialog declarative Echo bot. This bot is built using decl
 [1]:https://aka.ms/adaptive-dialogs
 [deploy-button]:https://aka.ms/deploytoazurebutton
 [arm-template]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FBotBuilder-Samples%2Fhailiu%2Farm-deploy%2Fsamples%2Fcsharp_dotnetcore%2Fadaptive-dialog%2F20.EchoBot-declarative%2Fazuredeploy.json
+
+[arm-custom-ui]: https://portal.azure.com/#create/opslogix.TestCreateUIDef/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FBotBuilder-Samples%2Fhailiu%2Farm-deploy%2Fsamples%2Fcsharp_dotnetcore%2Fadaptive-dialog%2F20.EchoBot-declarative%2Fazuredeploy.json
+
+
+[create-ui-blade]: https://portal.azure.com/#blade/Microsoft_Azure_CreateUIDef/CustomDeploymentBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FBotBuilder-Samples%2Fhailiu%2Farm-deploy%2Fsamples%2Fcsharp_dotnetcore%2Fadaptive-dialog%2F20.EchoBot-declarative%2Fazuredeploy.json
+
+[create-ui-sandbox]: https://portal.azure.com/?feature.customPortal=false#blade/Microsoft_Azure_CreateUIDef/SandboxBlade

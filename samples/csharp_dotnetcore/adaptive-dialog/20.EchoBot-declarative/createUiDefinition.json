@@ -3,13 +3,31 @@
     "handler": "Microsoft.Azure.CreateUIDef",
     "version": "0.1.2-preview",
     "parameters": {
-       "basics": [{
+       "basics": [
+           {
+             "name": "botIdCheck",
+             "type": "Microsoft.Solutions.ArmApiControl",
+             "request": {
+                "method": "POST",
+                "path": "providers/Microsoft.BotService/checkNameAvailability?api-version=2018-07-12",
+                "body": "[parse(concat('{\"type\":\"\", \"name\":\"', basics('botId'), '\"}'))]"
+             }
+           },
+           {
             "name": "botId",
 			"label": "Bot Id",
             "type": "Microsoft.Common.TextBox",
             "constraints": {
                 "required": true,
-                "regex": "^[a-z][-a-z0-9]{4,32}$"
+                "validations": [
+                    {
+                        "isValid": "[basics('botIdCheck').valid]",
+                        "message": "Bot id not available"
+                    },
+                    {
+                        "regex": "^[a-zA-Z][-a-zA-Z0-9]{4,32}$"
+                    }
+                ]
             }
        }],
        "steps": [
