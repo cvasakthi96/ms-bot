@@ -21,11 +21,11 @@
                 "required": true,
                 "validations": [
                     {
-                        "isValid": "[basics('botIdCheck').valid]",
-                        "message": "Bot id not available"
+                        "regex": "^[a-zA-Z][-a-zA-Z0-9]{4,32}$"
                     },
                     {
-                        "regex": "^[a-zA-Z][-a-zA-Z0-9]{4,32}$"
+                        "isValid": "[basics('botIdCheck').valid]",
+                        "message": "Bot id not available"
                     }
                 ]
             }
@@ -79,6 +79,9 @@
                        "type": "Microsoft.Common.PasswordBox",
                        "constraints": {
                            "required": false
+                       },
+                       "options": {
+                        "hideConfirmation": true
                        }
                    }
                ]
