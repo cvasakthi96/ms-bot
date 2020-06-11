@@ -2,15 +2,12 @@
 // Licensed under the MIT License.
 
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Adapters.Slack;
+using Microsoft.Bot.Builder.Adapters.Slack.Model.Request;
 using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
-using SlackAPI;
-using Attachment = Microsoft.Bot.Schema.Attachment;
 
 namespace Microsoft.BotBuilderSamples.Bots
 {
@@ -38,9 +35,9 @@ namespace Microsoft.BotBuilderSamples.Bots
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
         protected override async Task OnEventActivityAsync(ITurnContext<IEventActivity> turnContext, CancellationToken cancellationToken)
         {
-            if (turnContext.Activity.TryGetChannelData(out SlackRequestBody body))
+            if (turnContext.Activity.Name == "Command")
             {
-                if (body?.Command == "/test")
+                if (turnContext.Activity.Value.ToString() == "/test")
                 {
                     var interactiveMessage = MessageFactory.Attachment(
                         CreateInteractiveMessage(
@@ -49,15 +46,14 @@ namespace Microsoft.BotBuilderSamples.Bots
                 }
             }
 
-            if (turnContext.Activity.TryGetChannelData(out SlackEvent slackEvent))
+            if (turnContext.Activity.Value is EventType slackEvent)
             {
-                if (slackEvent?.SubType == "file_share")
+                if (slackEvent.Type == "message")
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Echo: I received an attachment"), cancellationToken);
-                }
-                else if (slackEvent?.Message?.Attachments != null)
-                {
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Echo: I received a link share"), cancellationToken);
+                    if (slackEvent.AdditionalProperties.ContainsKey("subtype") && slackEvent.AdditionalProperties["subtype"].ToString() == "file_share")
+                    {
+                        await turnContext.SendActivityAsync(MessageFactory.Text("Echo: I received an attachment"), cancellationToken);
+                    }
                 }
             }
         }
@@ -65,9 +61,9 @@ namespace Microsoft.BotBuilderSamples.Bots
         private static Attachment CreateInteractiveMessage(string filePath)
         {
             var interactiveMessageJson = System.IO.File.ReadAllText(filePath);
-            var adaptiveCardAttachment = JsonConvert.DeserializeObject<Block[]>(interactiveMessageJson);
+            var adaptiveCardAttachment = JsonConvert.DeserializeObject<object>(interactiveMessageJson);
 
-            var blockList = adaptiveCardAttachment.ToList();
+            var blockList = adaptiveCardAttachment;
 
             var attachment = new Attachment
             {

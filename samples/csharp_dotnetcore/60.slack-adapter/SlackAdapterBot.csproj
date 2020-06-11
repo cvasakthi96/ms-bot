@@ -20,4 +20,8 @@
       <Folder Include="Resources\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\botbuilder-dotnet\libraries\Adapters\Microsoft.Bot.Builder.Adapters.Slack\Microsoft.Bot.Builder.Adapters.Slack.csproj" />
+    </ItemGroup>
+
 </Project>
